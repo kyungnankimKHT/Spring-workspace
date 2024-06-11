@@ -6,11 +6,14 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import jakarta.servlet.http.HttpServletRequest;
+import lombok.extern.slf4j.Slf4j;
 
 //Bean : 스프링이 알아서 만들고 관리한다는 것
 
 @Controller // 응답 / 요청 제어 역할 명시 +Bean 등록
 @RequestMapping("param") //여기 밑에 작성하는 모든 주소앞에 param이 기본으로 붙음
+@Slf4j // Simple logging facade 4(for) Java 약자 -->System.out.println 비슷한 종류
+// System 출력에 비해 logging 사용하는게 메모리 부담이 적음 log를 이용한 메세지 출력 시 자주 사용
 public class ParameterController {
 	
 	//GETMAPPING main
@@ -39,6 +42,20 @@ public class ParameterController {
 		//form 밑에 input 에서 name으로 inputAge 존재하는 값 가져오기
 		//<input type="number" name="inputAge">
 		
+		//inputName과 inputAddress와 inputAge가 제대로 작성됐는지 확인하기
+		System.out.println("이름 확인 : " + inputName);
+		System.out.println("나이 확인 : " + inputAge);
+		System.out.println("주소 확인 : " + inputAddress);
+		
+		
+		// -> System 대신 log.debug 를 활용해서 출력하는 것이 메모리 부담 
+		//-> 코드 오류 해결하기 위한 로그
+		// -> 코드 오류는 없는데 정상적으로 수행이 안되거나
+		// -> 값이 잘못된 경우 -> 값 추적
+		log.info("정보 확인하기");
+		log.debug("로그로 이름확인 : " + inputName);
+		log.debug("로그로 나이확인 : " + inputAge);
+		log.debug("로그로 주소확인 : " + inputAddress);
 		
 		
 		/*

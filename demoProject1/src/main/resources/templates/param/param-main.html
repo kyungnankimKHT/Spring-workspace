@@ -15,7 +15,12 @@
 		 param/test1 -> http://localhost:8081/param/param/test1
 		 
 		 /param/main -> http://localhost:8081/param/main  문제 발생
-		 /param/test1 ->
+		 /param/test1 ->http://localhost:8081/param/main 문제 없이 실행
+		 			  -> input 에 작성한 값을 확인하고 다시 input 페이지로 돌아오는 것
+		 			  -> 값 전달하고 /param/main 페이지로 돌아오는 과정이 너무 빠르기 때문에
+		 			  	우리 눈에는 변화가 없는 것처럼 보이는 것
+		 맨 앞에 /를 붙이지 않으면 Controller에 작성된 param이라는 공통 주소가 한 번 더 붙기 때문에
+		 위와 같이 /param/param/main, /param/param/test1 주소가 변형되는 것
 	  -->
 	<form action=" /param/test1" method="POST">
 		이름 : <input type="text" name="inputName"><br>
