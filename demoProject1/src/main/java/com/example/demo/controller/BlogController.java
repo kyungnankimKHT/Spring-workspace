@@ -5,6 +5,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.example.demo.model.dto.BlogDTO;
+
 import lombok.extern.slf4j.Slf4j;
 
 //어노테이션(@)이용해서, controller requestMapping("blog", slf4j 설정
@@ -19,16 +21,19 @@ public class BlogController {
 	// required=true
 	// return "redirect:/blog/blog-index"
 	@PostMapping("comment")
-	public String blogComment(@RequestParam("commentName") String commentName,
-							  @RequestParam("commentOpinion") String commentOpinion
-			) {
+	public String blogComment(BlogDTO blogDTO) {
 		
 		log.info("블로그 댓글 작성 공간");
 		
-		log.debug("commentName : " + commentName);
-		log.debug("commentOpinion : " + commentOpinion);
+		BlogDTO bd = new BlogDTO();
 		
-		log.info("블로그 댓글 작성 완료하고 다시 블로그 메인페이지로 돌아가기");
+		bd.getCommentName();
+		bd.getCommentOpinion();
+		
+		bd.setCommentName("홍길동");
+		bd.setCommentOpinion("잘봤습니다.");
+		
+		log.info("bd 에 작성한 내용 보기" + bd.toString());
 		
 		return "redirect:/blog/blog-index";
 	}
