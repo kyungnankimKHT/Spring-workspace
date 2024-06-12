@@ -1,5 +1,9 @@
 package com.example.demo.controller;
 
+import java.util.Arrays;
+import java.util.List;
+import java.util.Map;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -117,6 +121,42 @@ public class ParameterController {
 		return "redirect:/param/main";
 	}
 	
+	
+	/*3. @RequestParam 여러 개 (복수, 다수) 파라미터 */
+	
+	//String[]
+	//List<자료형>
+	//Map<String, Object>
+	//defaultValue 속성은 사용할 수 없음
+	
+	@PostMapping("test3")
+	public String paramTest3(@RequestParam(value="color", required=false) String[] colorArr,
+							@RequestParam(value="fruit", required=false) List<String> fruitList,
+							@RequestParam Map<String, Object> paramMap
+			) {
+		
+		
+		log.info("colorArr : " + Arrays.toString(colorArr));
+		
+		log.info("fruitList : " + fruitList);
+		
+		log.info("paramMap : " + paramMap);
+		//-> key(name 속성값)이 중복되면 덮어쓰기가 됨
+		// 같은 name 속성 파라미터가 String[] List로 저장이 되는 것은 힘듬
+		return "redirect:/param/main";
+	}
+	
+
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	/*
 	 * DTO와 VO
 	 * DTO : Data Transfer Object 데이터 캡슐화를 통해 데이터를 전달하고 관리
@@ -154,9 +194,18 @@ public class ParameterController {
 		
 		MemberDTO mem = new MemberDTO();
 		mem.getMemberAge(); //getter 를 통해 나이 가져오기
+		mem.getMemberName();
+		mem.getMemberPw();
+		mem.getMemberId();
+		log.info("inputMember에 대한 get 정보 가져오기 : " + inputMember.toString());
+		
+		
+		
+		
 		mem.setMemberAge(0); //setter 를 통해 나이 가져오기
-		
-		
+		mem.setMemberName("가나다");
+		mem.setMemberPw("pass01");
+		mem.setMemberId("1");
 		//getter setter 이용해서 
 		//	private String memberId;
 		// private String memberPw;
@@ -164,7 +213,7 @@ public class ParameterController {
 		//굳이 따로 만들지 않아도 lombok @Getter @Setter 를 만들어 가져오기 때문에 
 		//사용 가능한 것
 		
-		log.info("inputMember에 대한 정보 가져오기 : " + inputMember.toString());
+		log.info("inputMember에 대한 set 정보 가져오기 : " + inputMember.toString());
 		return "redirect:/param/main";
 		
 		/*
