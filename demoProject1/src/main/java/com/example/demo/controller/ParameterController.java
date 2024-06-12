@@ -4,6 +4,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import jakarta.servlet.http.HttpServletRequest;
 import lombok.extern.slf4j.Slf4j;
@@ -91,10 +92,26 @@ public class ParameterController {
 	
 	// 400 Bad Request(잘못된 요청)
 	// - 파라미터 불충분
-	@PostMapping("test2")
-	public String paramTest2(/* RequestParam은 여기에 보통 작성 */) {
+	
+	/*
+	 * 	책 제 목 : <input type="text" name="title">    <br>
+		작 성 자 : <input type="text" name="writer">   <br>
+		가    격 : <input type="number" name="price">  <br>
+		출 판 사 : <input type="text" name="publisher"><br>
+	 * 
+	 * */
+	@PostMapping("test2") //   /param/test2
+	public String paramTest2(@RequestParam(/*value=*/"title"/*, required=true*/) String title,
+							 @RequestParam(          "writer"                  ) String writer,
+							 @RequestParam(           "price"                  ) int price,
+							 @RequestParam(value="publisher",defaultValue="교보문고", required=false) String publisher
+			
+			) {
 		log.info("문제없이 insert 가능한지 확인하기");
-		
+		log.debug("title : " + title);
+		log.debug("writer : " + writer);
+		log.debug("price : " + price);
+		log.debug("publisher : " + publisher);
 		return "redirect:/param/main";
 	}
 	
