@@ -119,33 +119,71 @@
 
 	<!--  DTO 객체 출력 -->
 	<h3>DTO 객체 출력</h3>
+	<h4>방법 1번</h4>
 	<ul>
-		<li th:text="${std}">std 객체</li> <!--  StudentDTO(studentNo=12345, name=홍길동, age=30) -->
-		<li th:text="${std.studentNo}">학번</li> <!--  12345 -->
-		<li th:text="${std.name}">이름</li>      <!--  홍길동  -->
-		<li th:text="${std.age}">나이</li>       <!--  30    -->
+		<li th:text="${std}">std 객체</li>
+		<!--  StudentDTO(studentNo=12345, name=홍길동, age=30) -->
+		<li th:text="${std.studentNo}">학번</li>
+		<!--  12345 -->
+		<li th:text="${std.name}">이름</li>
+		<!--  홍길동  -->
+		<li th:text="${std.age}">나이</li>
+		<!--  30    -->
 	</ul>
 	<!--  std student 줄임말 많이 사용 
 			student에 
 			학번으로 studentNo    
 			이름    name   
 	 -->
+	<h4>방법 2번</h4>
+	<pre>
+		th:object 속성 +   *{필드명}
+		- th:object 속성 : 해당 태그 내에서
+						지정된 객체의 필드를 쉽게 접근하게 하는 속성					
+		- *{} : th:object 로 지정된 객체의 필드를 접근할 때 사용하는 방법
+	</pre>
 
+	<ul th:object="${std}">
+		<li th:text="*{studentNo}">학번</li>
+		<li th:text="*{name}">이름</li>
+		<li th:text="*{age}">나이</li>
+	</ul>
 
 	<h4>DTO MEMBER 객체 출력</h4>
 	<ul>
 		<li th:text="${mem}">mem 객체</li>
-		mem.memberNo
-		mem.memberName
-		mem.memberAge
+		<li th:text="${mem.memberNo}">멤버 번호</li>
+		<li th:text="${mem.memberName}">멤버 이름</li>
+		<li th:text="${mem.memberAge}">멤버 나이</li>
 	</ul>
 
+	<!-- 방법 2 번을 활용해서 mem 객체들 보여주기 -->
+	<ul th:object="${mem}">
+		<li th:text="*{memberNo}">학번</li>
+		<li th:text="*{memberName}">이름</li>
+		<li th:text="*{memberAge}">나이</li>
+	</ul>
 
-
-
-
-
-
+	<h4>방법 3번</h4>
+	<h5>DTO가 담긴 List 출력하기</h5>
+	<table border="1">
+		<thead>
+			<tr>
+				<th>학번</th>
+				<th>이름</th>
+				<th>나이</th>
+			</tr>
+		</thead>
+		<tbody>
+			<!-- th:each 가 설정된 태그 전체(tr) 반복됨 -->
+			<tr th:each="std : ${stdList}" th:object="${std}">
+				<td th:text="*{studentNo}">학번</td>
+				<td th:text="*{name}">이름</td>
+				<td th:text="*{age}">나이</td>
+			
+			</tr>
+		</tbody>
+	</table>
 
 
 

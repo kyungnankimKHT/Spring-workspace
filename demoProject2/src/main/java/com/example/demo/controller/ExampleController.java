@@ -8,6 +8,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.example.demo.dto.MemberDTO;
 import com.example.demo.dto.StudentDTO;
 
 import jakarta.servlet.http.HttpServletRequest;
@@ -65,16 +66,33 @@ public class ExampleController {
 			model.addAttribute("std", std);
 			
 			
+			MemberDTO mem = new MemberDTO();
+			mem.setMemberNo("1");
+			mem.setMemberName("강영희");
+			mem.setMemberAge("50");
+			
+			model.addAttribute("mem",mem);
+			
+			/*
+			 model.addAttribute("별칭", 별칭이 아래와 똑같지 않아도 됨);
+			 <li th:text="${별칭}">mem 객체</li>
+			 
+			 model.addAttribute("a", b);
+			 <li th:text="${a}">mem 객체</li>	
+			 
+			 나중에 이름이 다르면 문제가 생겼을 때 찾기 어렵기 때문에
+			 a와 b의 별칭을 동일하게 설정해주는 것이 좋음
+			 * */
 			
 			
 			
 			
+			//List<StudentDTO> 객체에 Model을 이용해서 html 전달
+			List<StudentDTO> stdList = new ArrayList<>();
 			
+			stdList.add(new StudentDTO("1111","김일번",10));
 			
-			
-			
-			
-			
+			model.addAttribute("stdList", stdList);
 			
 			
 			
