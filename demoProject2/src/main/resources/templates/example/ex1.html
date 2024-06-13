@@ -180,13 +180,27 @@
 				<td th:text="*{studentNo}">학번</td>
 				<td th:text="*{name}">이름</td>
 				<td th:text="*{age}">나이</td>
-			
 			</tr>
 		</tbody>
 	</table>
-
-
-
+	<!--  table 이용해서 mem 출력 -->
+<table border="1">
+		<thead>
+			<tr>
+				<th>학번</th>
+				<th>이름</th>
+				<th>나이</th>
+			</tr>
+		</thead>
+		<tbody>
+			<!-- th:each 가 설정된 태그 전체(tr) 반복됨 -->
+			<tr th:each="mem : ${memList}" th:object="${mem}">
+				<td th:text="*{memberNo}">번호</td>
+				<td th:text="*{memberName}">이름</td>
+				<td th:text="*{memberAge}">나이</td>
+			</tr>
+		</tbody>
+	</table>
 
 
 

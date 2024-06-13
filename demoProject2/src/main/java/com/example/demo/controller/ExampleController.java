@@ -6,6 +6,8 @@ import java.util.List;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.example.demo.dto.MemberDTO;
@@ -89,17 +91,53 @@ public class ExampleController {
 			
 			//List<StudentDTO> 객체에 Model을 이용해서 html 전달
 			List<StudentDTO> stdList = new ArrayList<>();
-			
 			stdList.add(new StudentDTO("1111","김일번",10));
-			
+			stdList.add(new StudentDTO("222","김이번",20));
+			stdList.add(new StudentDTO("333","김삼번",30));
 			model.addAttribute("stdList", stdList);
 			
 			
+			//List<MemberDTO> 객체에 Model을 이용해서 html 전달    memList
+			List<MemberDTO> memList =new ArrayList<>();
+			memList.add(new MemberDTO("100", "박세모", "40"));
+			memList.add(new MemberDTO("200", "윤네모", "60"));
+			memList.add(new MemberDTO("300", "최다이아", "50"));
 			
+			model.addAttribute("memList", memList);
 			
 			return "example/ex1"; // templates/example/ex1.html 파일 바라보는 것
 		}
+		
+		/*
+		 * @PathVariable
+		 * - 주소 중 일부분을 변수 값 처럼 사용
+		 * + 해당 어노테이션으로 얻어온 값은 request scope에 세팅
+		 * */
+		@GetMapping("/ex2/{number}")
+		public String pathVariableTest(
+				@PathVariable("number") int number
+				// 주소 중 {number} 부분의 값을 가져와 매개변수에 저장
+				// + requestScope 세팅
+				) {
+			
+			return "example/testResult";
+		}
+		
+		@PostMapping("ex2")
+		public String ex2(Model model) {
+			
+			model.addAttribute("str","<h1> 테스트중 &times; </h1>");
+			return "example/ex2";
+		}
+		
 }
+
+
+
+
+
+
+
 
 
 
