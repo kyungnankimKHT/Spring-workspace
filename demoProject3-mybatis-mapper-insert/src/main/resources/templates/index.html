@@ -23,6 +23,14 @@
 		상품수량 : <input type="number" th:field="*{goodsQuantity}"><br>
 		<button>제출하기</button>
 	</form>
+	
+	<h1>음료등록하기</h1>
+    <form th:action="@{/drink-register}" method="post" th:object="${drink}">
+        음료명 : <input type="text" th:field="*{drinksName}"><br>
+        음료가격 : <input type="number" th:field="*{drinksPrice}"><br>
+        음료수량 : <input type="number" th:field="*{drinksQuantity}"><br>
+        <button>제출하기</button>
+    </form>
 </body>
 </html>
 

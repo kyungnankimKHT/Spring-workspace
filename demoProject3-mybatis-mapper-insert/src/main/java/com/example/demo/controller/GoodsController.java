@@ -6,7 +6,9 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import com.example.demo.dto.Drink;
 import com.example.demo.dto.Goods;
+import com.example.demo.service.DrinkService;
 import com.example.demo.service.GoodsService;
 
 //class명을 Controller로 작성하면 기존에 Spring에 존재하는 Controller와 충돌이나서 Spring안에 있는
@@ -17,6 +19,7 @@ public class GoodsController {
 	public String registerForm(Model model) {
 		// DB에 값을 넣을 수 있도록 new Goods()를 이용해서 값이 들어갈 공간을 비어서 만들어주기
 		model.addAttribute("goods", new Goods());
+		model.addAttribute("drink", new Drink());
 		return "index";
 	}
 	
@@ -34,8 +37,7 @@ public class GoodsController {
 		 * db에 들어가기 전에 임시저장(할당됨)
 		 * 
 		 * Model model = 돌아가기를 하거나, 새로고침과 같은 기능을 사용할 경우, html파일에 데이터를 다시 전달하는 역할
-		 * 또 다른의미로 임시저장
-		 *  
+		 * 또 다른의미로 임시저장 
 		 *  */
 		
 		goodsService.insertGoods(goods);
@@ -43,15 +45,14 @@ public class GoodsController {
 		model.addAttribute("msg", "상품이 성공적으로 가입됐습니다.");
 		return "registerSuccess";
 	}
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
+	@Autowired
+	private DrinkService drinkService;
+	@PostMapping("/drink-register")
+	public String insertDrink(Drink drink, Model model) {
+
+		drinkService.insertDrink(drink);
+		//log
+		model.addAttribute("msg", "상품이 성공적으로 가입됐습니다.");
+		return "successDrink";
+	}
 }
