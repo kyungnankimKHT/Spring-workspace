@@ -1,5 +1,7 @@
 package com.khmall.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -16,4 +18,15 @@ public class ProductService {
 		productMapper.insertProduct(Goods);
 	}
 
+	//상품 db에서 가져온 상품 목록들을 controller에 전달해주기
+	public List<Goods> getAllProduct(){
+		return productMapper.getAllProduct();
+	}
 }
+
+
+
+
+
+
+
