@@ -1,5 +1,7 @@
 package com.example.demo.mapper;
 
+import java.util.List;
+
 import org.apache.ibatis.annotations.Mapper;
 
 import com.example.demo.dto.Goods;
@@ -13,4 +15,5 @@ import com.example.demo.dto.Goods;
 @Mapper //sql 사용할 리스트 목록
 public interface GoodsMapper {
 	void insertGoods(Goods goods);
+	 
 }

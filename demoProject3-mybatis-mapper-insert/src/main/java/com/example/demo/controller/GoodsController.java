@@ -1,5 +1,7 @@
 package com.example.demo.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -11,9 +13,12 @@ import com.example.demo.dto.Goods;
 import com.example.demo.service.DrinkService;
 import com.example.demo.service.GoodsService;
 
+import lombok.extern.slf4j.Slf4j;
+
 //class명을 Controller로 작성하면 기존에 Spring에 존재하는 Controller와 충돌이나서 Spring안에 있는
 //Controller 기능을 사용하지 못함
 @Controller
+@Slf4j
 public class GoodsController {
 	@GetMapping("/") //맨 앞 페이지에서 볼 화면 띄우기
 	public String registerForm(Model model) {
@@ -55,4 +60,7 @@ public class GoodsController {
 		model.addAttribute("msg", "상품이 성공적으로 가입됐습니다.");
 		return "successDrink";
 	}
+	
+	
+
 }
