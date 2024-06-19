@@ -6,8 +6,11 @@ import lombok.*;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
+@ToString
 public class Snacks {
 	private int snack_id;
 	private String snack_name;
 	private int price;
+
+
 }
