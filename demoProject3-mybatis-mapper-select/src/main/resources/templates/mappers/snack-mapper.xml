@@ -10,7 +10,9 @@
 	resultType : DB에서 가져온 결과들을 저장하는 공간 -->
 <mapper namespace="com.khmall.mapper.SnackMapper">
 	<select id="getAllSnacks" resultType="com.khmall.dto.Snacks">
-		SELECT * FROM snacks<!-- ; 는 붙이지 않음 -->
+		SELECT s.snack_id, s.snack_name, s.price, c.company_name, c.company_phone
+		FROM snacks s, company c
+		WHERE s.company_id = c.company_id
 
 	</select>
 
