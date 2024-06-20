@@ -16,4 +16,10 @@ public class SCService {
 	public List<SC> getAllSC(){
 		return scmapper.getAllSC();
 	}
+	
+	//getSnackById
+	
+	public SC getSnackById(int snack_id){
+		return scmapper.getSnackById(snack_id);
+	}
 }

@@ -6,7 +6,7 @@ import lombok.*;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-//@ToString
+@ToString
 public class SC {
 	private int snack_id;
 	private String snack_name;
@@ -18,4 +18,5 @@ public class SC {
 	// company_name과 company_phone 가지오겠다.
 	private String company_name;
 	private String company_phone;
+	private String company_address;
 }

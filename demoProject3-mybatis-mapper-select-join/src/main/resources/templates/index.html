@@ -21,6 +21,8 @@
 	 			<th>가격</th>
 	 			<th>회사명</th>
 	 			<th>회사번호</th>
+	 			<th>회사주소</th>
+	 			<th>과자상세페이지로이동하기</th>
 	 		</tr>
 	 	</thead>
 	 	<tbody>
@@ -29,6 +31,13 @@
 	 			<td th:text="${sac.price}"></td>
 	 			<td th:text="${sac.company_name}"></td>
 	 			<td th:text="${sac.company_phone}"></td>
+	 			<td th:text="${sac.company_address}"></td>
+	 			<td>
+	 				<a th:href="@{'/snack/' + ${sac.snack_id}}"> 이동하기</a>
+	 				<!--  sql에서 시작하는 id값이 1번부터인데 0이 뜬다. 
+	 					  값을 가져오지 못한 것 0 = null
+	 				 -->
+	 			</td>
 	 		</tr>
 	 	
 	 	
