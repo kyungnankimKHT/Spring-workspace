@@ -1,10 +1,56 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
-<meta charset="EUC-KR">
-<title>Insert title here</title>
+<meta charset="utf-8">
+<title>돼지 목록</title>
+<style type="text/css">
+table {
+	width: 50%;
+	border-collapse: collapse;
+}
+
+th, td {
+	padding: 10px;
+	border: 1px solid #ddd;
+}
+
+img {
+	width: 50%;
+	height: auto;
+}
+</style>
 </head>
 <body>
-
+	<h1>돼지목록</h1>
+	<table>
+		<thead>
+			<tr>
+				<th>이미지</th>
+				<th>이름</th>
+			<tr>
+		</thead>
+		<tbody>
+		<!--  PigController.java 	model.addAttribute("pigs",pigs); -->
+			<tr th:each="  p    :  ${pigs}">
+				<td>
+					<img  th:src="@{${p.pig_image_path}}" >
+				</td>
+				<td  th:text="${p.pig_name}"> </td>
+			</tr>
+		
+		</tbody>
+	</table>
 </body>
 </html>
+
+
+
+
+
+
+
+
+
+
+
+
