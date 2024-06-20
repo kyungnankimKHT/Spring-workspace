@@ -17,4 +17,11 @@ public class PigService {
 	public List<Pig> getAllPigs(){
 		return pigMapper.getAllPigs();
 	}
+	
+	//getPigById
+	public Pig getPigById(int pig_id){
+		return pigMapper.getPigById(pig_id);
+	}
+	
+	
 }

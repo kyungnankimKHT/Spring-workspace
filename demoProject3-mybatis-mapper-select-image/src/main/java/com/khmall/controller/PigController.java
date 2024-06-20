@@ -21,6 +21,8 @@ public class PigController {
 		model.addAttribute("pigs",pigs);
 		return "index";
 	}
+	
+	@GetMapping()
 }
 
 

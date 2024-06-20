@@ -8,4 +8,18 @@
 	<select id="getAllPigs" resultType="com.khmall.dto.Pig">
 		SELECT * FROM pigs
 	</select>
+	
+	<!--  돼지 상세보기  ById id값으로 돼지정보 get 하겠다. 
+		parameterType = 자료형 id자료형이 무엇인지 작성-->
+	
+	<select id="getPigById" resultType="com.khmall.dto.Pig" parameterType="int">
+		SELECT * FROM pigs
+		WHERE pig_id = #{pig_id}
+	</select>
 </mapper>
+
+
+
+
+
+
