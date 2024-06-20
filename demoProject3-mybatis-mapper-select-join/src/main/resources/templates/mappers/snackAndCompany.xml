@@ -26,6 +26,17 @@
 				아이디값과 일치하는 데이터를 모두 가져오겠다.
 		 -->
 	</select>
+	
+	<!-- 
+	SELECT s.snack_id,  s.snack_name, s.price, c.company_name, c.company_phone, c.company_address
+	FROM snacks s, company c
+	WHERE s.company_id = c.company_id
+	AND SNACK_ID = #{snack_id} 
+		   
+	join과 where을 통해 어떤 값을 찾을 때 AND 문을 사용할 수 있다.
+	
+	
+	 -->
 </mapper>
 
 

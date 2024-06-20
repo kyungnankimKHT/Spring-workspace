@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>돼지 목록</title>
+    <style>
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        th, td {
+            padding: 10px;
+            border: 1px solid #ddd;
+        }
+        img {
+            width: 100px;
+            height: auto;
+        }
+    </style>
+</head>
+<body>
+    <h1>돼지 목록</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>이름</th>
+                <th>나이</th>
+                <th>이미지</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="pig : ${pigs}">
+                <td th:text="${pig.pig_name}"></td>
+                <td th:text="${pig.pig_age}"></td>
+                <td>
+                    <img th:src="@{${pig.pig_image_path}}" alt="돼지 이미지">
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</body>
+</html>
