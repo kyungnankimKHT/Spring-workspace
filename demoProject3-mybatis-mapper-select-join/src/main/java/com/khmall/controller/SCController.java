@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 
 import com.khmall.dto.SC;
 import com.khmall.service.SCService;
@@ -40,6 +41,16 @@ public class SCController {
 		model.addAttribute("snackAndCompany",sc);
 		return "index";
 	}
+	
+	@GetMapping("/snack/{snack_id}") //주소값이 변할 때는 변하는 변수를 {}로 감싸줌
+	//주소값으로 id 숫자를 가져와서 주소값에 지정된 id 숫자와 일치하는 db 값을 모두 가져오기
+	public String getSnackById(Model model, @PathVariable int snack_id ) {
+		// 주소값으로 설정한 id를 받아오고 scservice에 전달해서 DB에서 꺼내오기 작업
+		SC sc = scService.getSnackById(snack_id);
+		model.addAttribute("snack", sc);
+		return "snackDetail";
+	}
+	
 }
 
 
