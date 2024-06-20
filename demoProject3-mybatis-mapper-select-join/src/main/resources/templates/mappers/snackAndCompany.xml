@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+        
+<!-- mapper 로 insert select update delete 감싸서 보낼 Mapper.java 경로 설정 -->
+
+<mapper namespace="com.khmall.mapper.SCMapper">
+	<select id="getAllSC" resultType="com.khmall.dto.SC">
+		SELECT s.snack_name, s.price, c.company_name, c.company_phone
+		FROM snacks s, company c
+		WHERE s.company_id = c.company_id
+	</select>
+
+
+</mapper>
