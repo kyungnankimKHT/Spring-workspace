@@ -63,7 +63,15 @@ public class PigController {
 			, Model model) { //@RequestParam 
 		pigService.uploadPig(pig_name,pig_age,file);
 		log.info("pigUpload확인 ");
-		return "index"; //upload 완료 되면 메인페이지로 가서 제대로 등록됐는지 확인
+		return "redirect:/"; //upload 완료 되면 메인페이지로 가서 제대로 등록됐는지 확인
+		// redirect:/ index만 넣었을 때 차이점
+		/*
+		 * redirect:/ 사용자가 새로운 url로 다시 요청하도록 지시 
+		 * -> react로 작성하고나서 값을 전달할 때 주로 사용할 예정
+		 * 
+		 * index html 파일 이름을 의미
+		 * 
+		 * */
 	}
 	
 }

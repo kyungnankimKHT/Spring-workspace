@@ -32,10 +32,25 @@ public class PigService {
 		String fileName = file.getOriginalFilename();
 		System.out.println("file Name : " + fileName);
 		
+	
+		//String uploadDir = "C:/Users/user1/Desktop/pig_img/";
+		//String uploadDir = "C:/Users/user1/servlet_jsp_workspace/demoProject3-mybatis-mapper-select-image/src/main/resources/static/images";
+		//맨 끝에 /로 닫아주지 않으면 static/images/안에 이미지가 저장되는 것이 아니라
+		// static 바로 밑에 생성되기 때문에 이미지가 보이지 않으므로 반드시 마지막에 / 를 넣어줘야함
+		
+		String uploadDir = "C:/Users/user1/servlet_jsp_workspace/demoProject3-mybatis-mapper-select-image/src/main/resources/static/images/";
+
+		File imgFile = new File(uploadDir + fileName);
+		
 		// 나중에 이미지 파일을 저장하는 폴더가 존재하지 않을 경우 생성하는 코드
 		// 우리가 저장하고자 하는 파일 경로 설정
-		String uploadDir = "C:/Users/user1/Desktop/pig_img/";
-		File imgFile = new File(uploadDir + fileName);
+		
+		if( !imgFile.exists()  /*만약에 이미지 폴더가 존재하지 않을 때가 true인 ! 추가*/) {
+			//폴더 생성하기
+			imgFile.mkdirs(); //폴더가 존재하지 않을 경우 우리가 지정한 폴더에 생성
+		}
+		
+		
 		try {
 			file.transferTo(imgFile);//이미지를 폴더에 저장하는 코드  /****** 추가 *******/
 			//업로드 한 다음에 저장된 이미지 경로와 함께 돼지 정보를 저장하는 서비스를 작성
