@@ -82,7 +82,7 @@ public class LoginController {
 		return "modifyProfile";
 	}
 	
-	@PostMapping("/form action에 작성한 주소값 넣기")
+	@PostMapping("/modiftProfile")
 	public String updateMember(HttpSession session, Member updateMember) {
 		//현재 로그인이 된 세션의 정보를 가지고 와서 멤버 정보 조회하는 코드
 		Member member= (Member) session.getAttribute("loginSession");
