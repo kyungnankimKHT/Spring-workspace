@@ -18,6 +18,11 @@ public class MemberService {
 		
 		return memberMapper.getLogin(member_name, member_phone);
 	}
+	
+	// void는 return이 없다! void는 통보하는 것이기 때문에 전달하지 않음
+	public void updateMember(Member member) { 
+		memberMapper.updateMember(member);
+	}
 }
 
 

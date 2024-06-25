@@ -67,6 +67,44 @@ public class LoginController {
 		return "myPage";
 	}
 	
+	/*****  마이페이지 불러오고 수정하는 GET POST ******/
+	@GetMapping("/modiftProfile")
+	public String modifyMypage(HttpSession session, Model model) {
+		//현재 로그인이 된 세션의 정보를 가지고 와서 멤버 정보 조회하는 코드
+		Member member= (Member) session.getAttribute("loginSession");
+		
+		//만약에 로그인이 되어있지 않은데 접촉하려한다. 그러면 묻지도말고 바로 홈페이지로 돌려보내자
+		if (member == null) {
+			return "redirect:/login";
+		}
+		// 만약에 모델에 정보가 담겨있으면 보여줄 멤버 객체
+		model.addAttribute("member",member);
+		return "modifyProfile";
+	}
+	
+	@PostMapping("/form action에 작성한 주소값 넣기")
+	public String updateMember(HttpSession session, Member updateMember) {
+		//현재 로그인이 된 세션의 정보를 가지고 와서 멤버 정보 조회하는 코드
+		Member member= (Member) session.getAttribute("loginSession");
+		
+		//만약에 로그인이 되어있지 않은데 접촉하려한다. 그러면 묻지도말고 바로 홈페이지로 돌려보내자
+		if (member == null) {
+			return "redirect:/login";
+		}
+		
+		updateMember.setMember_id(member.getMember_id());
+		memberService.updateMember(updateMember);
+		session.setAttribute("loginSession", updateMember);
+		return "redirect:/myPage";
+	}
+	
+	
+	
+	
+	
+	
+	
+	
 }
 
 
