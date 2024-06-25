@@ -99,7 +99,21 @@ public class LoginController {
 	}
 	
 	
-	
+	@GetMapping("/deleteMember")
+	public String deleteMember(HttpSession session) {
+		//현재 로그인이 된 세션의 정보를 가지고 와서 멤버 정보 조회하는 코드
+		Member member= (Member) session.getAttribute("loginSession");
+		
+		//만약에 로그인이 되어있지 않은데 접촉하려한다. 그러면 묻지도말고 바로 홈페이지로 돌려보내자
+		if (member == null) {
+			return "redirect:/login";
+		}
+		
+		memberService.deleteMember(member.getMember_id());
+		//session에 저장된 멤버 아이디를 가져오겠다. member.getMember_id()
+		session.invalidate(); //삭제후 로그인 없던일로 처리
+		return "redirect:/";
+	}
 	
 	
 	

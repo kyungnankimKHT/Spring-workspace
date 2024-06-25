@@ -22,6 +22,11 @@
 		member_age = #{member_age}
 		WHERE member_id = #{member_id}
 	</update>
+	
+	<delete id="deleteMember" parameterType="int">
+		DELETE FROM member 
+		WHERE member_id = #{member_id}
+	</delete>
 
 </mapper>
 

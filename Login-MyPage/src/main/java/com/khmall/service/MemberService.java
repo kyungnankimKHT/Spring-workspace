@@ -23,6 +23,11 @@ public class MemberService {
 	public void updateMember(Member member) { 
 		memberMapper.updateMember(member);
 	}
+	
+	// 삭제는 통보다 = void != return
+	public void deleteMember(int member_id) {
+		memberMapper.deleteMember(member_id);
+	}
 }
 
 

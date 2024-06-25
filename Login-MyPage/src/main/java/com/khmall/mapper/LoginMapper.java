@@ -16,9 +16,10 @@ public interface LoginMapper {
 	Member getLogin(@Param("member_name") String member_name,
 					@Param("member_phone") String member_phone);
 	
-	//insert와 update는 void 다!
+	//insert와 update와 delete는 void 다!
 	void updateMember(Member member);
 	
+	void deleteMember(@Param("member_id") int member_id);
 	
 	//select 에서 1개의 값을 볼 때는 List를 안쓰고 
 	//2개 이상을 값을 볼 때는 List를 붙인다. 
