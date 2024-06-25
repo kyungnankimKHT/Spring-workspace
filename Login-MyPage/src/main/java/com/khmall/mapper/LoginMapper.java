@@ -1,5 +1,7 @@
 package com.khmall.mapper;
 
+import java.util.List;
+
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
@@ -23,6 +25,8 @@ public interface LoginMapper {
 	
 	//select 에서 1개의 값을 볼 때는 List를 안쓰고 
 	//2개 이상을 값을 볼 때는 List를 붙인다. 
+	
+	List<Member> searchMembers(@Param("keyword") String keyword);
 }
 
 

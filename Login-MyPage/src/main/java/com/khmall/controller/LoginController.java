@@ -1,5 +1,7 @@
 package com.khmall.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -115,10 +117,20 @@ public class LoginController {
 		return "redirect:/";
 	}
 	
+	//검색하는 화면 보일 수 있도록 @GetMapping
+	@GetMapping("/search")
+	public String showSearchForm(Model model) {
+		return "search";
+	}
 	
-	
-	
-	
+	//검색하는 결과 볼 수 있도록 @PostMapping
+	@PostMapping("/search")
+	public String searchMembers(Model model, @RequestParam("keyword") String keyword) {
+		List<Member> member = memberService.searchMembers(keyword);
+		model.addAttribute("results",member);
+		return "search";
+		
+	}
 }
 
 
