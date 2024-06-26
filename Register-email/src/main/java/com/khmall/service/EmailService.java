@@ -5,19 +5,23 @@ import org.springframework.stereotype.Service;
 
 import jakarta.mail.MessagingException;
 import jakarta.mail.internet.MimeMessage;
+import lombok.RequiredArgsConstructor;
 
 @Service
+@RequiredArgsConstructor //@Autowired = 클래스 안에 변수마다 하나씩 설정해주는 것이고
+//@RequiredArgsConstructor는 @Autowired 와 같지만 내부에서 하나씩 하나씩 해주는 것이아니라 외부에서 전체적으로 설정
+//@Autowired spring에서 만들어서 이름이 autowired lombok에서 만들어서 이름이 구체적으로 @RequiredArgsConstructor
 public class EmailService {
 	
 	//자바 자체에서 제공하는 이메일 보내기 기능 틀
 	// 왜 틀만 제공하냐면 이메일을 전송하는데 어느회사 어느규격 이메일인지 알 수 없기 때문에
 	// 이메일을 보낼 때 보내는이 내용 받는이
-	private JavaMailSender javaMailSender;
+	private final JavaMailSender javaMailSender;
 	
 	// 이메일을 보낼 이메일 주소값
-	private String senderEmail = "nanykimkh@gmail.com"; //이메일을 보낼 담당자 이메일 작성
+	private static final String senderEmail = "nanykimkh@gmail.com"; //이메일을 보낼 담당자 이메일 작성
 	//application.properties에서 가져온 이메일을 그대로 사용 
-	private int number; // 인증번호를 보낼 숫자 공간
+	private static int number; // 인증번호를 보낼 숫자 공간
 	
 	//랜덤으로 인증번호 생성하는 메서드(기능 = 동작) 설정
 	//임의로 6자리를 생성하는 규칙
@@ -33,7 +37,7 @@ public class EmailService {
 	 * 만약에 5자리 
 	 * number = (int)(Math.random() * (9000)) + 10000;
 	 * */
-	public void 번호생성() {
+	public static void 번호생성() {
 		number = (int)(Math.random() * (90000)) + 100000;
 	}
 	
