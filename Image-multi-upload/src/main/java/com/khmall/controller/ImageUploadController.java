@@ -14,6 +14,8 @@ import org.springframework.web.multipart.MultipartFile;
 import com.khmall.util.FileUploadUtil;
 /*     기획      ->     백엔드      ->  프론트엔드  
  * 
+ * Mapping 작성하고 Mapping("/주소=api")
+ * 
  * @Controller
  *   주로 html(view 화면)을 반환하기 위해 사용
  * 
@@ -25,15 +27,9 @@ import com.khmall.util.FileUploadUtil;
  * 
  * */
 @RequestMapping("api/v2/img") //ImageUploadController 밑에 작성하는 모든 주소 앞에 api/v1/img 붙음
-@RestController
+@RestController //->백엔드용 작성하는 controller
 public class ImageUploadController {
-	//Request method 'GET'  -> 만들어주지
-	@GetMapping("/upload")
-	public String get() {
-		return"html 파일 위치를 가리키거나 가리킬 주소";
-	}
-	
-	@PostMapping("/upload") //   api/v1/img/upload
+	@PostMapping("/upload") // post api 1개 생성 =   api/v2/img/upload
 	public void savImage(@RequestParam("files")MultipartFile[] files) {
 		String 업로드할폴더위치 = "imgFolder"; //static 밑에 imgFolder를 만들어서 업로드 시킬 예정
 		

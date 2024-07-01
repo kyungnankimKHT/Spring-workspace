@@ -20,7 +20,8 @@ public class FileUploadUtil {
 		
 		// 내가 지금 실행하고 있는 자바 파일 위치의 주소 가져오기
 		// 바탕화면에 imgFolder 생성하고 이미지 3개 선택해서 폴더에 저장 PostMan 이용해서 
-		Path uploadPath = Paths.get("C:\\" + uploadDir); 
+		// api/v2/img
+		Path uploadPath = Paths.get("C:/Users/user1/Desktop" + uploadDir); 
 		
 		//1. File 사용해서 폴더 생성을 위해 경로 설정
 		//2. String으로 변환해서 글자로 변환하여 파일경로 읽기
