@@ -6,22 +6,24 @@ import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
 
 import com.kh.test.service.GoodsItemService;
 
-@Controller
+@RestController
 public class GoodsItemController {
 	
 	@Autowired
 	private GoodsItemService goodsItemService;
-	
-	@GetMapping("/gooditem/check")//ajax에서 url에 작성한 url값 넣어주기
-	public Map<String, Object> existsByName(@RequestParam String itemName) {
+	// 만약에 에러로  template [check] @Controller ->@RestController
+	@GetMapping("/check")//ajax에서 url에 작성한 url값 넣어주기
+	public Map<String, Boolean> existsByName(@RequestParam String itemName) {
 		//만약에 상품명이 조회가 된다면 이미 존재하는 상품명입니다. 만들기
 		
 		boolean isCheck = goodsItemService.existsByName(itemName);
-		Map<String, Object> res = new HashMap<>();
+		Map<String, Boolean> res = new HashMap<>();
 		// String itemName  Object isCheck
 		//ajax는 html을 return 작성하지 않음
 		// 왜냐하면 html 파일을 불러오는 것이 아니라

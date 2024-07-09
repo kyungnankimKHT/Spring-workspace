@@ -25,12 +25,10 @@
 		  resultType    = com.kh.test.dto.GoodsItem 넣어도되고, Map이나 Integer String을 넣어도 됨
 		  parameterType = com.kh.test.dto.GoodsItem 설정해서 일일이 맞춰줌
 		  resultMap     = 위에서 작성한 resultMap의 id값을 넣어줌 goodsMap
+		  
+		  resultType과 resultMap 일반적으로 같이 사용 불가
 		  -->
-	<select id="existsByName" 
-			resultType="java.lang.Integer" 
-			resultMap="goodsMap" 
-			parameterType="com.kh.test.dto.GoodsItem"
-			>
+<select id="existsByName" resultType="java.lang.Integer" resultMap="goodsMap" parameterType="com.kh.test.dto.GoodsItem">
 	 <!--  만약에 goods_item 테이블에서 
 	 		상품명이 하나라도 존재한다면 COUNT에 1이라고 뜰 것이고
 	 		상품명이 동일한게 2개 뜬다면 2라고 뜰 것
