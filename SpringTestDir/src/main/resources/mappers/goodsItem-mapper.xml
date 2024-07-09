@@ -17,6 +17,7 @@
 		<id column="item_id" property="itemId"></id>
 		<result column="item_name" property="itemName"/>
 		<result column="item_description" property="itemDes"/>
+		<result column="COUNT(*)" property="itemCount"/>
 	</resultMap>
 	
 	<!--  상품명이 존재하는지 확인하는 select 쿼리   
@@ -34,6 +35,10 @@
 	 		상품명이 하나라도 존재한다면 COUNT에 1이라고 뜰 것이고
 	 		상품명이 동일한게 2개 뜬다면 2라고 뜰 것
 	 		그런데 없으면 아무것도 표기가 되지 않을 것
+	 		
+<select id="existsByName" resultType="java.lang.Integer" 
+			parameterType="com.kh.test.dto.GoodsItem">
+			작성해서 숫자값만 넘겨줄 수 있음
 	 -->
 	SELECT COUNT(*) FROM goods_item
 	WHERE item_name = #{itemName}

@@ -17,12 +17,12 @@ public class GoodsItemController {
 	private GoodsItemService goodsItemService;
 	
 	@GetMapping("/gooditem/check")//ajax에서 url에 작성한 url값 넣어주기
-	public Map<String, Object> existsByName(@RequestParam String name) {
+	public Map<String, Object> existsByName(@RequestParam String itemName) {
 		//만약에 상품명이 조회가 된다면 이미 존재하는 상품명입니다. 만들기
 		
-		boolean isCheck = goodsItemService.existsByName(name);
+		boolean isCheck = goodsItemService.existsByName(itemName);
 		Map<String, Object> res = new HashMap<>();
-		
+		// String itemName  Object isCheck
 		//ajax는 html을 return 작성하지 않음
 		// 왜냐하면 html 파일을 불러오는 것이 아니라
 		// html 파일의 일부분만 설정하는 것이기 때문
