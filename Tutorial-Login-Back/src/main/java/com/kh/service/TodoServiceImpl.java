@@ -1,5 +1,8 @@
 package com.kh.service;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -33,6 +36,16 @@ public class TodoServiceImpl implements TodoService{
 	@Override
 	public int signup(TodoMember member) {
 		return mapper.signup(member);
+	}
+	
+	@Override
+	public Map<String, Object> login(TodoMember member) {
+		TodoMember loginMember = mapper.login(member);
+		
+		Map<String, Object> map =new HashMap<>();
+		map.put("loginMember", loginMember);
+		
+		return map;
 	}
 	
 }
